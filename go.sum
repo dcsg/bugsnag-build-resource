@@ -1,0 +1,4 @@
+github.com/dcsg/bugsnag-build-resource v0.0.0-20200521171125-41597bb12ff5 h1:nEA6uUEd/vWMX6Qn9O5y3lsJgGe113tVMArcNCK8Q6s=
+github.com/dcsg/bugsnag-build-resource v0.0.0-20200521171125-41597bb12ff5/go.mod h1:Aa12i4rXn0G7xWF9aVduXkc1eBXUUtWpAqFCKdk/a1c=
+github.com/mitchellh/mapstructure v1.3.0 h1:iDwIio/3gk2QtLLEsqU5lInaMzos0hDTz8a6lazSFVw=
+github.com/mitchellh/mapstructure v1.3.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
