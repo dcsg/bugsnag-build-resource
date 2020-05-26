@@ -20,7 +20,7 @@ Implements a [Concourse CI](https://concourse-ci.org/) resource type that report
 * `release_stage`: *Optional.* The stage (ex. `staging`, `production`)
 * `source_control`: *Optional.* Provide information about the source code
   * `provider`: *Required.* One of: `github`, `github-enterprise`, `bitbucket`, `bitbucket-server`, `gitlab`, `gitlab-onpremise`
-  * `repository_url`: *Required.* The url of the repository (ex. `https://github.com/dcsg/bugsnag-build-resource.git`)
+  * `repository`: *Required.* The url of the repository (ex. `https://github.com/dcsg/bugsnag-build-resource.git`)
   * `revision`: *Required.* The commit reference. It can be a string or a filepath (ex. `master-code/.git/ref`)
 
 ## Example
@@ -58,6 +58,37 @@ jobs:
             provider: gitlab
             repository: https://github.com/dcsg/bugsnag-build-resource.git
             revision: master-code/.git/ref
+```
+
+## Not implemented (yet)
+
+The Bugsnag Build API have the following properties that are not yet implemented:
+
+* appBundleVersion
+* builderName
+* metadata
+* autoAssignRelease
+
+## Development
+
+### Prerequisites
+
+* golang is *required* - version 1.14.x is tested; earlier versions may also
+  work.
+* docker is *required* - version 19.03.x is tested; earlier versions may also
+  work.
+
+### Running the tests
+
+The tests have been embedded with the `Dockerfile`; ensuring that the testing
+environment is consistent across any `docker` enabled platform. When the docker
+image builds, the test are run inside the docker container, on failure they
+will stop the build.
+
+Run the tests with the following command:
+
+```sh
+docker build -t bugsnag-build-resource -f dockerfiles/Dockerfile .
 ```
 
 ### Contributing

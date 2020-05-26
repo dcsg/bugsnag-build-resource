@@ -5,37 +5,60 @@ type Source struct {
 }
 
 type SourceControl struct {
-	Provider   string `json:"provider"`
-	Repository string `json:"repository_url"`
-	Revision   string `json:"revision"`
+	Provider      string `json:"provider"`
+	RepositoryUrl string `json:"repository"`
+	Revision      string `json:"revision"`
+}
+
+type Metadata struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
+}
+
+type Version struct {
+	Build string `json:"build"`
+}
+
+type CheckRequest struct {
+	Source  Source  `json:"source"`
+	Version Version `json:"version"`
+}
+
+type InRequest struct {
+	Source  Source  `json:"source"`
+	Version Version `json:"version"`
+}
+
+type InResponse struct {
+	Version  Version    `json:"version"`
+	Metadata []Metadata `json:"metadata,omitempty"`
 }
 
 type OutParams struct {
 	AppVersion    string        `json:"app_version"`
 	ReleaseStage  string        `json:"release_stage,omitempty"`
-	SourceControl SourceControl `json:"source_control"`
+	SourceControl SourceControl `json:"source_control,omitempty"`
 }
 
-type OutPayload struct {
+type OutRequest struct {
 	Source    Source    `json:"source"`
 	OutParams OutParams `json:"params"`
 }
 
-type Version struct {
-	Id string `json:"id"`
-}
-
-type InResponse struct {
-	Version Version `json:"version"`
-}
-
 type OutResponse struct {
-	Version Version `json:"version"`
+	Version  Version    `json:"version"`
+	Metadata []Metadata `json:"metadata,omitempty"`
 }
 
-type BugsnagBuild struct {
+type BugsnagBuildParams struct {
 	ApiKey        string        `json:"apiKey"`
 	AppVersion    string        `json:"appVersion"`
 	ReleaseStage  string        `json:"releaseStage,omitempty"`
 	SourceControl SourceControl `json:"sourceControl"`
+}
+
+type BugsnagResponse struct {
+	Status   string   `json:"string"`
+	Warnings []string `json:"warnings,omitempty"`
+	Errors   []string `json:"errors,omitempty"`
 }

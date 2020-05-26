@@ -8,13 +8,21 @@ import (
 )
 
 func main() {
-	response := resource.InResponse{
-		Version: resource.Version{
-			Id: "unsupported",
-		},
+	var (
+		inRequest  resource.InRequest
+		inResponse resource.InResponse
+	)
+
+	err := json.NewDecoder(os.Stdin).Decode(&inRequest)
+	if err != nil {
+		panic(err)
 	}
 
-	err := json.NewEncoder(os.Stdout).Encode(response)
+	inResponse = resource.InResponse{
+		Version: inRequest.Version,
+	}
+
+	err = json.NewEncoder(os.Stdout).Encode(inResponse)
 	if err != nil {
 		panic(err)
 	}
